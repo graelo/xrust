@@ -159,10 +159,18 @@ then the final `target` tree structure is
 ## <a name="targets-table"></a>Available cross-compilation targets
 
 
-| Image name                | target triple              | dockcross base image       |
-| ---                       | ---                        | ---                        |
-| u0xy/xrs:linux-arm64      | aarch64-unknown-linux-gnu  | dockcross/linux-arm64      |
-| u0xy/xrs:linux-arm64-musl | aarch64-unknown-linux-musl | dockcross/linux-arm64-musl |
+| Image name                 | target triple                  | dockcross base image        |
+| ---                        | ---                            | ---                         |
+| u0xy/xrs:linux-arm64       | aarch64-unknown-linux-gnu      | dockcross/linux-arm64       |
+| u0xy/xrs:linux-arm64-musl  | aarch64-unknown-linux-musl     | dockcross/linux-arm64-musl  |
+| u0xy/xrs:linux-armv5       | armv5te-unknown-linux-gnueabi  | dockcross/linux-armv5       |
+| u0xy/xrs:linux-armv5-musl  | armv5te-unknown-linux-musleabi | dockcross/linux-armv5-musl  |
+| u0xy/xrs:linux-armv6       | arm-unknown-linux-gnueabihf    | dockcross/linux-armv6       |
+| u0xy/xrs:linux-armv6-musl  | arm-unknown-linux-musleabihf   | dockcross/linux-armv6-musl  |
+| u0xy/xrs:linux-armv7       | armv7-unknown-linux-gnueabihf  | dockcross/linux-armv7       |
+| u0xy/xrs:linux-armv7l-musl | armv7-unknown-linux-musleabihf | dockcross/linux-armv7l-musl |
+| u0xy/xrs:linux-mips        | mips-unknown-linux-gnu         | dockcross/linux-mips        |
+| u0xy/xrs:linux-mipsel      | mipsel-unknown-linux-gnu       | dockcross/linux-mipsel      |
 
 All credits to [Dockcross project](https://github.com/dockcross/dockcross).
 
