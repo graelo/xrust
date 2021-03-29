@@ -4,7 +4,7 @@ This project provides Docker images for cross-compiling your Rust projects.
 Each image can be used on a Linux or macOS host and is dedicated to
 cross-compiling to some target.
 
-Rust 1.50 is the release currently used.
+Rust 1.51 is the release currently used.
 
 The images are derived from those of the awesome [Dockcross
 project](https://github.com/dockcross/dockcross), simply adding `rustup`,
