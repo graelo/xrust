@@ -1,16 +1,18 @@
 FROM dockcross/linux-mips:latest
 LABEL maintainer="u0xy <u0xy@u0xy.cc>"
-LABEL org.label-schema.name="u0xy/xrs:linux-mips"
+LABEL org.label-schema.name="u0xy/linux-mips"
 
-ENV DEFAULT_DOCKCROSS_IMAGE u0xy/xrs:linux-mips
+ARG RUST_VERSION
+ENV DEFAULT_DOCKCROSS_IMAGE u0xy/linux-mips:rust-${RUST_VERSION}
 ENV TARGET_NAME mips-unknown-linux-gnu
 
-RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y \
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --profile minimal --default-toolchain "${RUST_VERSION}" \
     && $HOME/.cargo/bin/rustup target add ${TARGET_NAME}
 
 COPY cargo-config.sh .
 RUN /bin/sh cargo-config.sh ${TARGET_NAME} && rm cargo-config.sh
 
 COPY dockcross /dockcross/dockcross
+COPY entrypoint.sh /dockcross/entrypoint.sh
 
-ENV PATH ${PATH}:~/.cargo/bin
+ENTRYPOINT ["/dockcross/entrypoint.sh"]

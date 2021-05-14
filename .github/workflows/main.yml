@@ -1,0 +1,29 @@
+name: xrs CI
+
+on:
+  push:
+    branches:
+    - 'master'
+  pull_request:
+    branches:
+    - '*'
+
+jobs:
+  image:
+    name: ${{ matrix.arch_name }}
+    runs-on: ubuntu-20.04
+    strategy:
+      fail-fast: false
+      matrix:
+        arch_name: [linux-arm64, linux-arm64-musl, linux-armv5-musl, linux-armv6-musl, linux-armv7l-musl]
+    steps:
+      - uses: actions/checkout@v2
+      - name: build
+        run: make ${{ matrix.arch_name }}
+      - name: test
+        run: make ${{ matrix.arch_name }}.test
+      - name: deploy
+        if: github.ref == 'refs/heads/master'
+        run: |
+            docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASS }}
+            docker image push u0xy/${{ matrix.arch_name }}
