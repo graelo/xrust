@@ -10,7 +10,7 @@ ORG = u0xy
 
 # Rust release to embed in the image
 ifndef RUST_VERSION
-	RUST_VERSION = 1.32.0
+	RUST_VERSION = 1.33.0
 endif
 
 # All currently available images
@@ -39,7 +39,6 @@ $(IMAGES):
 		-t $(ORG)/$@:$(TAG_BUILD) \
 		-t $(ORG)/$@:$(TAG_RUST) \
 		--build-arg RUST_VERSION=$(RUST_VERSION) \
-		--build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
 		-f Dockerfile.$@ \
 		.
 
