@@ -208,10 +208,10 @@ If you want to build an image with a specific version of Rust:
 
 ### Minimum versions
 
-Compilation will fail if Rust version is below these:
+Here are the minimum Rust version per supported image (compilation will fail otherwise):
 
-- linux-arm64: rust-1.41.0
-- linux-arm64-musl: rust-1.48.0
-- linux-armv5-musl: rust-1.30.0
-- linux-armv6-musl: rust-1.30.0
-- linux-armv7l-musl: rust-1.30.0
+- `linux-arm64`: `1.41.0`
+- `linux-arm64-musl`: `1.48.0`
+- `linux-armv5-musl`: `1.30.0`
+- `linux-armv6-musl`: `1.30.0`
+- `linux-armv7l-musl`: `1.30.0`

@@ -9,10 +9,10 @@ ENV TARGET_NAME armv7-unknown-linux-gnueabihf
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --profile minimal --default-toolchain "${RUST_VERSION}" \
     && $HOME/.cargo/bin/rustup target add ${TARGET_NAME}
 
-COPY cargo-config.sh .
+COPY imagefiles/cargo-config.sh .
 RUN /bin/sh cargo-config.sh ${TARGET_NAME} && rm cargo-config.sh
 
-COPY dockcross /dockcross/dockcross
-COPY entrypoint.sh /dockcross/entrypoint.sh
+COPY imagefiles/dockcross /dockcross/dockcross
+COPY imagefiles/entrypoint.sh /dockcross/entrypoint.sh
 
 ENTRYPOINT ["/dockcross/entrypoint.sh"]

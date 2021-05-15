@@ -3,7 +3,7 @@ name: xrs CI
 on:
   push:
     branches:
-    - 'master'
+    - 'main'
   pull_request:
     branches:
     - '*'
@@ -15,7 +15,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        arch_name: [linux-arm64, linux-arm64-musl, linux-armv5-musl, linux-armv6-musl, linux-armv7l-musl]
+        arch_name: [linux-armv5-musl, linux-armv6-musl, linux-armv7l-musl]
     steps:
       - uses: actions/checkout@v2
       - name: build
@@ -23,7 +23,7 @@ jobs:
       - name: test
         run: make ${{ matrix.arch_name }}.test
       - name: deploy
-        if: github.ref == 'refs/heads/master'
+        if: github.ref == 'refs/heads/main'
         run: |
             docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASS }}
-            docker image push u0xy/${{ matrix.arch_name }}
+            docker image push --all-tags u0xy/${{ matrix.arch_name }}
