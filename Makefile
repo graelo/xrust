@@ -10,7 +10,7 @@ ORG = u0xy
 
 # Rust release to embed in the image
 ifndef RUST_VERSION
-	RUST_VERSION = 1.41.0
+	RUST_VERSION = 1.42.0
 endif
 
 # All currently available images
