@@ -205,8 +205,12 @@ If you want to build an image with a specific version of Rust:
 
     make RUST_VERSION=1.42.0 linux-arm64
 
+If you want to run a minimal test
 
-### Minimum versions
+    make RUST_VERSION=1.42.0 linux-arm64.test
+
+
+### Minimum Rust versions
 
 Here are the minimum Rust version per supported image (compilation will fail otherwise):
 
