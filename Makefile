@@ -10,11 +10,11 @@ ORG = u0xy
 
 # Rust release to embed in the image
 ifndef RUST_VERSION
-	RUST_VERSION = 1.40.0
+	RUST_VERSION = 1.41.0
 endif
 
 # All currently available images
-IMAGES = linux-armv5-musl linux-armv6-musl linux-armv7l-musl
+IMAGES = linux-arm64 linux-armv5-musl linux-armv6-musl linux-armv7l-musl
 
 # All available images including additional ones which don't link correctly
 # IMAGES = linux-arm64 linux-arm64-musl linux-armv5 linux-armv5-musl linux-armv6 linux-armv6-musl linux-armv7 linux-armv7l-musl linux-mips linux-mipsel

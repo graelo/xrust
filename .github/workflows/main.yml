@@ -15,7 +15,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        arch_name: [linux-armv5-musl, linux-armv6-musl, linux-armv7l-musl]
+        arch_name: [linux-arm64, linux-armv5-musl, linux-armv6-musl, linux-armv7l-musl]
     steps:
       - uses: actions/checkout@v2
       - name: build
