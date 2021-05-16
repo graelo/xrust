@@ -5,8 +5,7 @@ Each image can be used on a Linux or macOS host and is dedicated to
 cross-compiling to some target.
 
 The Rust release is indicated by a tag attached to the image. For instance,
-
-    u0xy/linux-armv5:rust-1.42.0
+`u0xy/linux-armv5:rust-1.42.0`.
 
 The images are derived from those of the awesome [Dockcross
 project](https://github.com/dockcross/dockcross), simply adding `rustup` with
@@ -17,6 +16,13 @@ All available targets are listed in the [table](#targets-table) below.
 
 This was tested to run on linux-amd64, macOS with Docker for Mac on both Intel
 and M1 platforms.
+
+
+## Quick start
+
+    docker run --rm u0xy/linux-arm64 > ./xrs
+    chmod u+x ./xrs
+    ./xrs cargo build --release
 
 
 ## Usage
@@ -166,17 +172,16 @@ And that's all.
 
 ## <a name="targets-table"></a>Available cross-compilation targets
 
-Each image in this list exists for most Rust versions > 1.42.0. Check the
-corresponding DockerHub page.
+Each image in this list exists for all Rust versions above the minimum listed.
 
 
-| Image name                                                                | target triple                  | dockcross base image        |
-| ---                                                                       | ---                            | ---                         |
-| [u0xy/linux-arm64](https://hub.docker.com/r/u0xy/linux-arm64)             | aarch64-unknown-linux-gnu      | dockcross/linux-arm64       |
-| [u0xy/linux-arm64-musl](https://hub.docker.com/r/u0xy/linux-arm64-musl)   | aarch64-unknown-linux-musl     | dockcross/linux-arm64-musl  |
-| [u0xy/linux-armv5-musl](https://hub.docker.com/r/u0xy/linux-armv5-musl)   | armv5te-unknown-linux-musleabi | dockcross/linux-armv5-musl  |
-| [u0xy/linux-armv6-musl](https://hub.docker.com/r/u0xy/linux-armv6-musl)   | arm-unknown-linux-musleabihf   | dockcross/linux-armv6-musl  |
-| [u0xy/linux-armv7l-musl](https://hub.docker.com/r/u0xy/linux-armv7l-musl) | armv7-unknown-linux-musleabihf | dockcross/linux-armv7l-musl |
+| Image name                                                                | target triple                  | dockcross base image        | min Rust version |
+| ---                                                                       | ---                            | ---                         | ---
+| [u0xy/linux-arm64](https://hub.docker.com/r/u0xy/linux-arm64)             | aarch64-unknown-linux-gnu      | dockcross/linux-arm64       | `1.41.0`         |
+| [u0xy/linux-arm64-musl](https://hub.docker.com/r/u0xy/linux-arm64-musl)   | aarch64-unknown-linux-musl     | dockcross/linux-arm64-musl  | `1.48.0`         |
+| [u0xy/linux-armv5-musl](https://hub.docker.com/r/u0xy/linux-armv5-musl)   | armv5te-unknown-linux-musleabi | dockcross/linux-armv5-musl  | `1.30.0`         |
+| [u0xy/linux-armv6-musl](https://hub.docker.com/r/u0xy/linux-armv6-musl)   | arm-unknown-linux-musleabihf   | dockcross/linux-armv6-musl  | `1.30.0`         |
+| [u0xy/linux-armv7l-musl](https://hub.docker.com/r/u0xy/linux-armv7l-musl) | armv7-unknown-linux-musleabihf | dockcross/linux-armv7l-musl | `1.30.0`         |
 
 All credits to the great [Dockcross project](https://github.com/dockcross/dockcross).
 
@@ -208,9 +213,6 @@ If you want to build an image with a specific version of Rust:
 If you want to run a minimal test
 
     make RUST_VERSION=1.42.0 linux-arm64.test
-
-
-### Minimum Rust versions
 
 Here are the minimum Rust version per supported image (compilation will fail otherwise):
 
